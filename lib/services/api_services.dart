@@ -42,14 +42,14 @@ class APIServices {
     try {
       var response = await http.get(
         Uri.parse(kBranchesUrl),
-        // headers: {
-        //   'Authorization':
-        //       'Bearer $token'
-        // },
         headers: {
           'Authorization':
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2MzAxMTM4LCJpYXQiOjE3MDk5MDExMzgsImp0aSI6IjZkYmQ5MDI2N2QxYTRjODI4Y2JkZmRmZDYyNTBlMTdiIiwidXNlcl9pZCI6MjF9.aHNMcqO3LA_IIk7-7QUnVIng8ux1Q9VmxH9s37TFwaY'
+              'Bearer $token'
         },
+        // headers: {
+        //   'Authorization':
+        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2MzAxMTM4LCJpYXQiOjE3MDk5MDExMzgsImp0aSI6IjZkYmQ5MDI2N2QxYTRjODI4Y2JkZmRmZDYyNTBlMTdiIiwidXNlcl9pZCI6MjF9.aHNMcqO3LA_IIk7-7QUnVIng8ux1Q9VmxH9s37TFwaY'
+        // },
       );
       if (response.statusCode == 200) {
         var body = await json.decode(response.body);
@@ -70,14 +70,14 @@ class APIServices {
     try {
       var response = await http.get(
         Uri.parse(kTreatmentsUrl),
-        // headers: {
-        //   'Authorization':
-        //       'Bearer $token'
-        // },
         headers: {
           'Authorization':
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2MzAxMTM4LCJpYXQiOjE3MDk5MDExMzgsImp0aSI6IjZkYmQ5MDI2N2QxYTRjODI4Y2JkZmRmZDYyNTBlMTdiIiwidXNlcl9pZCI6MjF9.aHNMcqO3LA_IIk7-7QUnVIng8ux1Q9VmxH9s37TFwaY'
+              'Bearer $token'
         },
+        // headers: {
+        //   'Authorization':
+        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2MzAxMTM4LCJpYXQiOjE3MDk5MDExMzgsImp0aSI6IjZkYmQ5MDI2N2QxYTRjODI4Y2JkZmRmZDYyNTBlMTdiIiwidXNlcl9pZCI6MjF9.aHNMcqO3LA_IIk7-7QUnVIng8ux1Q9VmxH9s37TFwaY'
+        // },
       );
       if (response.statusCode == 200) {
         var body = await json.decode(response.body);
@@ -98,14 +98,14 @@ class APIServices {
     try {
       var response = await http.get(
         Uri.parse(kPatientsUrl),
-        // headers: {
-        //   'Authorization':
-        //       'Bearer $token'
-        // },
         headers: {
           'Authorization':
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2MzAxMTM4LCJpYXQiOjE3MDk5MDExMzgsImp0aSI6IjZkYmQ5MDI2N2QxYTRjODI4Y2JkZmRmZDYyNTBlMTdiIiwidXNlcl9pZCI6MjF9.aHNMcqO3LA_IIk7-7QUnVIng8ux1Q9VmxH9s37TFwaY'
+              'Bearer $token'
         },
+        // headers: {
+        //   'Authorization':
+        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2MzAxMTM4LCJpYXQiOjE3MDk5MDExMzgsImp0aSI6IjZkYmQ5MDI2N2QxYTRjODI4Y2JkZmRmZDYyNTBlMTdiIiwidXNlcl9pZCI6MjF9.aHNMcqO3LA_IIk7-7QUnVIng8ux1Q9VmxH9s37TFwaY'
+        // },
       );
       if (response.statusCode == 200) {
         var body = await json.decode(response.body);
@@ -127,14 +127,14 @@ class APIServices {
     try {
       var response = await http.post(
         Uri.parse(kPatientRegistrationUrl),
-        // headers: {
-        //   'Authorization':
-        //       'Bearer $token'
-        // },
         headers: {
           'Authorization':
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2Mjc5Mjc2LCJpYXQiOjE3MDk4NzkyNzYsImp0aSI6ImVmMTRkNDFjMDA4ODQyOTY5YjY1ZDMxZjZiODc3NDhmIiwidXNlcl9pZCI6MjF9.GmGJ3rup9fHOfSRh59-P3N1MbSZ3oFyr1Pue91Do5-A'
+              'Bearer $token'
         },
+        // headers: {
+        //   'Authorization':
+        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2Mjc5Mjc2LCJpYXQiOjE3MDk4NzkyNzYsImp0aSI6ImVmMTRkNDFjMDA4ODQyOTY5YjY1ZDMxZjZiODc3NDhmIiwidXNlcl9pZCI6MjF9.GmGJ3rup9fHOfSRh59-P3N1MbSZ3oFyr1Pue91Do5-A'
+        // },
         body: newPatient.toJson(),
       );
       log(response.statusCode.toString());
