@@ -4,18 +4,15 @@ import 'package:noviindus_test/services/api_services.dart';
 
 class PatientController extends GetxController {
   var patientsList = <PatientModel>[].obs;
-  // var recommendationNewsList = <ArticlesR>[].obs;
-  // var categoryWiseNewsList = <ArticlesC>[].obs;
-  // var suggestionNewsList = <ArticlesC>[].obs;
   var isLoading = false.obs;
   var isDataAvailable = false.obs;
   var isRegistered = false.obs;
 
-  // @override
-  // void onInit() { 
-  //   super.onInit();
-  //   getAllPatientsList();
-  // }
+  @override
+  void onInit() { 
+    super.onInit();
+    getAllPatientsList();
+  }
 
   Future<void> getAllPatientsList() async {
     isLoading.value = true;

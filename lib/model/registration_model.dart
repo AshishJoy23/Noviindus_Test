@@ -35,21 +35,6 @@ class RegistrationModel {
 
   Map<String, String> toJson() {
     return {
-      //   'name': 'Test_user',
-      // 'excecutive': 'Test_excecutive',
-      // 'payment': 'Cash',
-      // 'phone': '1234567890',
-      // 'address': 'Kozhikode',
-      // 'total_amount': '5000',
-      // 'discount_amount': '500',
-      // 'advance_amount': '1000',
-      // 'balance_amount': '3500',
-      // 'date_nd_time': '08/03/2024-1:11 PM',
-      // 'id': '',
-      // 'male': '2,3',
-      // 'female': '2,4',
-      // 'branch': '162',
-      // 'treatments': '90,86',
       'name': name!,
       'excecutive': excecutive!,
       'payment': payment!,
@@ -66,22 +51,5 @@ class RegistrationModel {
       'branch': branch!,
       'treatments': treatments!,
     };
-    //   final Map<String, String> data = {};
-    //  data['id'] = id!;
-    //   data['name'] = name!;
-    //   data['excecutive'] = excecutive!;
-    //   data['payment'] = payment!;
-    //   data['phone'] = phone!;
-    //   data['address'] = address!;
-    //   data['total_amount'] = totalAmount!;
-    //   data['discount_amount'] = discountAmount!;
-    //   data['advance_amount'] = advanceAmount!;
-    //   data['balance_amount'] = balanceAmount!;
-    //   data['date_nd_time'] = dateNdTime!;
-    //   data['male'] = male!;
-    //   data['female'] = female!;
-    //   data['branch'] = branch!;
-    //   data['treatments'] = treatments!;
-    //   return data;
   }
 }
