@@ -4,9 +4,18 @@ import 'package:noviindus_test/utils/colors.dart';
 class CustomTextField extends StatelessWidget {
   final String title;
   final String hintText;
+  final TextEditingController textController;
+  final bool isNum;
+  final bool isObscureText;
 
-  const CustomTextField(
-      {super.key, required this.title, required this.hintText});
+  const CustomTextField({
+    super.key,
+    required this.title,
+    required this.hintText,
+    required this.textController,
+    this.isNum = false,
+    this.isObscureText = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,21 +31,27 @@ class CustomTextField extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 4),
         SizedBox(
           height: size.height * 0.065,
           child: TextFormField(
+            controller: textController,
+            keyboardType: isNum ? TextInputType.number : TextInputType.text,
             onTapOutside: (event) {
               FocusManager.instance.primaryFocus?.unfocus();
             },
+            obscureText: isObscureText,
             cursorColor: Colors.black,
             decoration: InputDecoration(
               filled: true,
               fillColor: AppColor.textfieldColor,
-              focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black)),
-              border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade100)),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(color: Colors.black)),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.grey.shade100),
+              ),
               hintText: hintText,
               hintStyle: const TextStyle(
                 fontSize: 16,
@@ -57,12 +72,16 @@ class CustomTextFieldWithIcon extends StatelessWidget {
   final String title;
   final String hintText;
   final IconData iconData;
+  final TextEditingController textController;
+  final VoidCallback onTap;
 
   const CustomTextFieldWithIcon({
     super.key,
     required this.title,
     required this.hintText,
-    required this.iconData
+    required this.iconData,
+    required this.textController,
+    required this.onTap,
   });
 
   @override
@@ -79,20 +98,27 @@ class CustomTextFieldWithIcon extends StatelessWidget {
             color: Colors.black,
           ),
         ),
+        const SizedBox(height: 4),
         SizedBox(
           height: size.height * 0.065,
           child: TextFormField(
-            onTapOutside: (event) {
+            controller: textController,
+            keyboardType: TextInputType.none,
+            onTap: onTap,
+            onTapOutside: (_) {
               FocusManager.instance.primaryFocus?.unfocus();
             },
             cursorColor: Colors.black,
             decoration: InputDecoration(
               filled: true,
               fillColor: AppColor.textfieldColor,
-              focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black)),
-              border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade100)),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(color: Colors.black)),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.grey.shade100),
+              ),
               hintText: hintText,
               hintStyle: const TextStyle(
                 fontSize: 16,

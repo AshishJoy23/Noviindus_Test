@@ -52,3 +52,16 @@ class TreatmentModel {
   }
 }
 
+class TreatmentBookingModel {
+  final String id;
+  final String treatmentName;
+  final String maleCount;
+  final String femaleCount;
+
+  TreatmentBookingModel({
+    required this.id,
+    required this.treatmentName,
+    required this.maleCount,
+    required this.femaleCount,
+  });
+}
