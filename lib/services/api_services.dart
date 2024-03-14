@@ -7,9 +7,10 @@ import 'package:noviindus_test/model/models.dart';
 import 'package:noviindus_test/utils/api_endpoints.dart';
 import '../controller/controllers.dart';
 
+String token = "";
 class APIServices {
   final appController = Get.put(AppController());
-  String token = "";
+  
   Future<bool> getLoginCredential(String username, String password) async {
     try {
       var response = await http.post(
@@ -21,11 +22,12 @@ class APIServices {
       );
       log(response.statusCode.toString());
       if (response.statusCode == 200) {
-        var body = await json.decode(response.body);
+        var body = jsonDecode(response.body);
         token = body['token'];
         appController.userToken.value = body['token'];
-        while (token.isEmpty) {
+        while (token == '') {
           await Future.delayed(const Duration(seconds: 1));
+          log('waiting');
         }
         return true;
       } else {
