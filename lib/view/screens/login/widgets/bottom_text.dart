@@ -8,11 +8,11 @@ class BottomTextWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: RichText(
-        textAlign: TextAlign.left,
+        textAlign: TextAlign.center,
         text: const TextSpan(
           text:
               'By creating or logging into an account you are agreeing\n with our',
-          style: TextStyle(fontSize: 14, color: Colors.black),
+          style: TextStyle(fontSize: 12, color: Colors.black),
           children: <TextSpan>[
             TextSpan(
               text: ' Terms and Conditions',
@@ -24,7 +24,7 @@ class BottomTextWidget extends StatelessWidget {
               text: ' and ',
             ),
             TextSpan(
-              text: 'Privacy Policy',
+              text: 'Privacy Policy.',
               style: TextStyle(
                 color: Colors.blue,
               ),

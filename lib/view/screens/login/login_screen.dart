@@ -64,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                       const Text(
                         'Login or Register To Book \nYour Appointments',
                         style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
+                            fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: size.height * 0.01),
                       CustomTextField(
