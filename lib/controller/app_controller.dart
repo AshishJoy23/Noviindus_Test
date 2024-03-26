@@ -4,7 +4,7 @@ import '../services/api_services.dart';
 
 class AppController extends GetxController {
   var isVerified = false.obs;
-  var userToken = "".obs;
+  var isObscure = true.obs;
 
   Future<void> verifyUserLogin(String username,String password) async {
     final response = await APIServices().getLoginCredential(username,password);

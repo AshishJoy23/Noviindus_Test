@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:noviindus_test/controller/controllers.dart';
-
 import '../../../../model/models.dart';
 import '../../../../utils/utils.dart';
 import '../../../widgets/widgets.dart';
@@ -69,6 +66,7 @@ class TreatmentDialogBox extends StatelessWidget {
                       treatmentController.femaleCounter.value == 0) {
                     showSnackbarMsg(context, 'Add atleast one patient');
                   } else {
+                    bool newItem = true;
                     TreatmentModel selected = treatmentController.treatmentsList
                         .firstWhere((element) =>
                             element.name == treatmentsController.text);
@@ -80,18 +78,32 @@ class TreatmentDialogBox extends StatelessWidget {
                       femaleCount:
                           treatmentController.femaleCounter.value.toString(),
                     );
-                    if (isEdit) {
-                      int index = treatmentController.treatmentsBookingList
-                          .indexWhere((element) => element.id == id);
-                      treatmentController.treatmentsBookingList.removeAt(index);
-                      treatmentController.treatmentsBookingList.insert(index,newTreatment);
-                      Navigator.of(context).pop();
-                      showSnackbarMsg(context, 'Treatment edited successfully');
-                    } else {
-                      treatmentController.treatmentsBookingList
-                          .add(newTreatment);
-                      Navigator.of(context).pop();
-                      showSnackbarMsg(context, 'Treatment added successfully');
+                    for (var element
+                        in treatmentController.treatmentsBookingList) {
+                      if (element.id == newTreatment.id) {
+                        newItem = false;
+                        showSnackbarMsg(context, 'Treatment already exists!!');
+                        break;
+                      }
+                    }
+                    if (newItem) {
+                      if (isEdit) {
+                        int index = treatmentController.treatmentsBookingList
+                            .indexWhere((element) => element.id == id);
+                        treatmentController.treatmentsBookingList
+                            .removeAt(index);
+                        treatmentController.treatmentsBookingList
+                            .insert(index, newTreatment);
+                        Navigator.of(context).pop();
+                        showSnackbarMsg(
+                            context, 'Treatment edited successfully');
+                      } else {
+                        treatmentController.treatmentsBookingList
+                            .add(newTreatment);
+                        Navigator.of(context).pop();
+                        showSnackbarMsg(
+                            context, 'Treatment added successfully');
+                      }
                     }
                   }
                 },

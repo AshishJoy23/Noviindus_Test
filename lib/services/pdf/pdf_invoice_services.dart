@@ -240,7 +240,7 @@ class PdfInvoiceServices {
       'Total',
     ];
     final data = invoice.patient.patientdetailsSet!.map((item) {
-      var treatmentName = 'Not Available';
+      var treatmentName = pw.Text('Not Available');
       var price = '0';
       var male = '0';
       var female = '0';
@@ -248,7 +248,7 @@ class PdfInvoiceServices {
       if (item.treatment != null) {
         final treatment = tController.treatmentsList
             .firstWhere((element) => element.id == item.treatment);
-        treatmentName = item.treatmentName!;
+        treatmentName = pw.Text(item.treatmentName!,overflow: pw.TextOverflow.clip);
         price = treatment.price!;
         male = item.male!;
         female = item.female!;
@@ -270,13 +270,20 @@ class PdfInvoiceServices {
       headerStyle: pw.TextStyle(
           font: pw.Font.helveticaBold(), color: PdfColors.green400),
       cellHeight: 25,
+      cellStyle: const pw.TextStyle(),
+      columnWidths: {
+        0: const pw.FractionColumnWidth(0.5),
+        1: const pw.FractionColumnWidth(0.125),
+        2: const pw.FractionColumnWidth(0.125),
+        3: const pw.FractionColumnWidth(0.125),
+        4: const pw.FractionColumnWidth(0.125),
+      },
       cellAlignments: {
         0: pw.Alignment.centerLeft,
         1: pw.Alignment.centerRight,
-        2: pw.Alignment.centerRight,
-        3: pw.Alignment.centerRight,
+        2: pw.Alignment.center,
+        3: pw.Alignment.center,
         4: pw.Alignment.centerRight,
-        5: pw.Alignment.centerRight,
       },
     );
   }

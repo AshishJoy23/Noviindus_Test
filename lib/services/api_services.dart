@@ -1,17 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:noviindus_test/main.dart';
 import 'package:noviindus_test/model/models.dart';
 import 'package:noviindus_test/utils/api_endpoints.dart';
-import '../controller/controllers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-String token = "";
 class APIServices {
-  final appController = Get.put(AppController());
   
   Future<bool> getLoginCredential(String username, String password) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       var response = await http.post(
         Uri.parse(kLoginUrl),
@@ -20,15 +19,11 @@ class APIServices {
           'password': password,
         },
       );
-      log(response.statusCode.toString());
       if (response.statusCode == 200) {
         var body = jsonDecode(response.body);
-        token = body['token'];
-        appController.userToken.value = body['token'];
-        while (token == '') {
-          await Future.delayed(const Duration(seconds: 1));
-          log('waiting');
-        }
+        await prefs.setString('token', body['token']);
+        token = prefs.getString('token');
+        log(token!);
         return true;
       } else {
         log('Error: ${response.statusCode.toString()}');
@@ -48,10 +43,6 @@ class APIServices {
           'Authorization':
               'Bearer $token'
         },
-        // headers: {
-        //   'Authorization':
-        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2MzAxMTM4LCJpYXQiOjE3MDk5MDExMzgsImp0aSI6IjZkYmQ5MDI2N2QxYTRjODI4Y2JkZmRmZDYyNTBlMTdiIiwidXNlcl9pZCI6MjF9.aHNMcqO3LA_IIk7-7QUnVIng8ux1Q9VmxH9s37TFwaY'
-        // },
       );
       if (response.statusCode == 200) {
         var body = await json.decode(response.body);
@@ -76,10 +67,6 @@ class APIServices {
           'Authorization':
               'Bearer $token'
         },
-        // headers: {
-        //   'Authorization':
-        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2MzAxMTM4LCJpYXQiOjE3MDk5MDExMzgsImp0aSI6IjZkYmQ5MDI2N2QxYTRjODI4Y2JkZmRmZDYyNTBlMTdiIiwidXNlcl9pZCI6MjF9.aHNMcqO3LA_IIk7-7QUnVIng8ux1Q9VmxH9s37TFwaY'
-        // },
       );
       if (response.statusCode == 200) {
         var body = await json.decode(response.body);
@@ -104,10 +91,6 @@ class APIServices {
           'Authorization':
               'Bearer $token'
         },
-        // headers: {
-        //   'Authorization':
-        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2MzAxMTM4LCJpYXQiOjE3MDk5MDExMzgsImp0aSI6IjZkYmQ5MDI2N2QxYTRjODI4Y2JkZmRmZDYyNTBlMTdiIiwidXNlcl9pZCI6MjF9.aHNMcqO3LA_IIk7-7QUnVIng8ux1Q9VmxH9s37TFwaY'
-        // },
       );
       if (response.statusCode == 200) {
         var body = await json.decode(response.body);
@@ -133,10 +116,6 @@ class APIServices {
           'Authorization':
               'Bearer $token'
         },
-        // headers: {
-        //   'Authorization':
-        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk2Mjc5Mjc2LCJpYXQiOjE3MDk4NzkyNzYsImp0aSI6ImVmMTRkNDFjMDA4ODQyOTY5YjY1ZDMxZjZiODc3NDhmIiwidXNlcl9pZCI6MjF9.GmGJ3rup9fHOfSRh59-P3N1MbSZ3oFyr1Pue91Do5-A'
-        // },
         body: newPatient.toJson(),
       );
       log(response.statusCode.toString());

@@ -12,3 +12,4 @@ export 'home/widgets/home_searchbar.dart';
 export 'home/widgets/home_sorting.dart';
 export 'home/widgets/patient_card.dart';
 export 'login/widgets/bottom_text.dart';
+export 'login/widgets/password_field.dart';

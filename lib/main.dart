@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:noviindus_test/view/screens/screens.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-bool? isLoggedIn;
+String? token;
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+  token = prefs.getString('token');
   runApp(const MyApp());
 }
 

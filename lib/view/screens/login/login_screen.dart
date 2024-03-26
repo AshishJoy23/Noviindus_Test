@@ -1,15 +1,12 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:noviindus_test/main.dart';
 import 'package:noviindus_test/utils/constants.dart';
 import 'package:noviindus_test/view/screens/screens.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../../controller/controllers.dart';
 import '../../widgets/widgets.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
@@ -73,45 +70,33 @@ class LoginScreen extends StatelessWidget {
                         textController: nameController,
                       ),
                       SizedBox(height: size.height * 0.01),
-                      CustomTextField(
+                      PasswordTextField(
                         title: 'Password',
                         hintText: 'Enter password',
                         textController: passwordController,
-                        isObscureText: true,
                       ),
                       const Spacer(),
                       CustomButtonWidget(
                         buttontext: 'Login',
                         onPressed: () async {
                           showDialog(
-                                context: context,
-                                barrierDismissible: false,
-                                builder: (context) {
-                                  return const Center(
-                                      child: SpinKitChasingDots(
-                                    color: Colors.white,
-                                  ));
-                                },
-                              );
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) {
+                              return const Center(
+                                  child: SpinKitChasingDots(
+                                color: Colors.white,
+                              ));
+                            },
+                          );
                           await appController.verifyUserLogin(
                               nameController.text, passwordController.text);
                           Get.back();
                           if (appController.isVerified.value) {
-                            setIsLoggedIn();
-                            while (appController.userToken.value.isEmpty) {
-                              // Wait for a short interval before checking again
-                              log('wait here in user interface login itself');
-                              await Future.delayed(Duration(seconds: 1));
-                              log(appController.userToken.value);
-                            }
-                            log('<<<<<<<<<<before parent from ui>>>>>>>>>>');
-                            log('${appController.userToken.value} new oneeeee');
-                            if (appController.userToken.value.isNotEmpty) {
-                              patientController.getAllPatientsList();
-                              treatmentController.getAllBranchesList();
-                              treatmentController.getAllTreatmentsList();
-                            }
-                            Get.to(()=>const HomeScreen());
+                            patientController.getAllPatientsList();
+                            treatmentController.getAllBranchesList();
+                            treatmentController.getAllTreatmentsList();
+                            Get.to(() => const HomeScreen());
                           } else {
                             // ignore: use_build_context_synchronously
                             showSnackbarMsg(context, 'Invalid login details!!');
@@ -129,9 +114,5 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-  Future setIsLoggedIn() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    isLoggedIn = await prefs.setBool('isLoggedIn', true);
   }
 }

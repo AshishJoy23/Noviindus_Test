@@ -20,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   final patientController = Get.put(PatientController());
+  final treatmentController = Get.put(TreatmentController());
 
   @override
   Widget build(BuildContext context) {
@@ -57,11 +58,13 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(
       const Duration(seconds: 4),
     );
-    if (isLoggedIn == true) {
+    if (token != null) {
       patientController.getAllPatientsList();
-      Get.to(() => const HomeScreen());
+      treatmentController.getAllBranchesList();
+      treatmentController.getAllTreatmentsList();
+      Get.off(() => const HomeScreen());
     } else {
-      Get.to(() => LoginScreen());
+      Get.off(() => LoginScreen());
     }
   }
 }

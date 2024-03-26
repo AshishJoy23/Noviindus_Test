@@ -1,9 +1,5 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../../../controller/controllers.dart';
 import '../../../../utils/utils.dart';
 
 class CustomDropDown extends StatelessWidget {
@@ -25,7 +21,6 @@ class CustomDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     log(dropdownItems.toString());
-    final treatmentController = Get.put(TreatmentController());
     var size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

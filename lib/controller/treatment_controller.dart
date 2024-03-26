@@ -18,8 +18,8 @@ class TreatmentController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getAllBranchesList();
-    getAllTreatmentsList();
+    // getAllBranchesList();
+    // getAllTreatmentsList();
     treatmentsBookingList.value = [];
     maleCounter.value = 0;
     femaleCounter.value = 0;

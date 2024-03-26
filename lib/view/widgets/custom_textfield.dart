@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:noviindus_test/utils/colors.dart';
+
+import '../../controller/app_controller.dart';
 
 class CustomTextField extends StatelessWidget {
   final String title;
   final String hintText;
   final TextEditingController textController;
   final bool isNum;
-  final bool isObscureText;
 
   const CustomTextField({
     super.key,
@@ -14,7 +18,6 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     required this.textController,
     this.isNum = false,
-    this.isObscureText = false,
   });
 
   @override
@@ -40,7 +43,6 @@ class CustomTextField extends StatelessWidget {
             onTapOutside: (event) {
               FocusManager.instance.primaryFocus?.unfocus();
             },
-            obscureText: isObscureText,
             cursorColor: Colors.black,
             decoration: InputDecoration(
               filled: true,

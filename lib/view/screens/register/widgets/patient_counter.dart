@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../controller/controllers.dart';
 import '../../../../utils/utils.dart';
 
+// ignore: must_be_immutable
 class PatientCounterWidget extends StatelessWidget {
   PatientCounterWidget({
     super.key,
@@ -38,7 +38,7 @@ class PatientCounterWidget extends StatelessWidget {
             children: [
               Text(
                 patientCategory,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),

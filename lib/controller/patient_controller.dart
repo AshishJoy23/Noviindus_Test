@@ -8,11 +8,11 @@ class PatientController extends GetxController {
   var isDataAvailable = false.obs;
   var isRegistered = false.obs;
 
-  @override
-  void onInit() { 
-    super.onInit();
-    getAllPatientsList();
-  }
+  // @override
+  // void onInit() { 
+  //   super.onInit();
+  //   getAllPatientsList();
+  // }
 
   Future<void> getAllPatientsList() async {
     isLoading.value = true;
