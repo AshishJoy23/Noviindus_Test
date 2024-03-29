@@ -11,7 +11,7 @@ class TreatmentDialogBox extends StatelessWidget {
   final bool isEdit;
   final String? id;
   const TreatmentDialogBox({
-    super.key,
+    key,
     required this.treatmentController,
     required this.treatmentsController,
     this.isEdit = false,

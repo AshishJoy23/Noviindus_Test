@@ -6,7 +6,7 @@ import '../../screens.dart';
 class PaymentOptionWidget extends StatelessWidget {
   final TreatmentController treatmentController;
   const PaymentOptionWidget({
-    super.key,
+    key,
     required this.treatmentController,
   });
 

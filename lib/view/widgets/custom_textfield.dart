@@ -1,10 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:noviindus_test/utils/colors.dart';
-
-import '../../controller/app_controller.dart';
 
 class CustomTextField extends StatelessWidget {
   final String title;
@@ -13,7 +8,7 @@ class CustomTextField extends StatelessWidget {
   final bool isNum;
 
   const CustomTextField({
-    super.key,
+    key,
     required this.title,
     required this.hintText,
     required this.textController,
@@ -78,7 +73,7 @@ class CustomTextFieldWithIcon extends StatelessWidget {
   final VoidCallback onTap;
 
   const CustomTextFieldWithIcon({
-    super.key,
+    key,
     required this.title,
     required this.hintText,
     required this.iconData,

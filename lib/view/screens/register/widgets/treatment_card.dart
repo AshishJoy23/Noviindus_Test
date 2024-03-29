@@ -7,7 +7,7 @@ import '../../../../utils/utils.dart';
 
 class TreatmentCardWidget extends StatelessWidget {
   const TreatmentCardWidget({
-    super.key,
+    key,
     required this.index,
     required this.treatment,
     required this.treatmentController,

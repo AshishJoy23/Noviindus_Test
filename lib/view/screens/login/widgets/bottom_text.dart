@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BottomTextWidget extends StatelessWidget {
-  const BottomTextWidget({super.key});
+  const BottomTextWidget({key});
 
   @override
   Widget build(BuildContext context) {

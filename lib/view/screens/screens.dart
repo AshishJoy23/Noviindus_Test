@@ -1,6 +1,7 @@
 export 'login/login_screen.dart';
 export 'splash/splash_screen.dart';
 export 'home/home_screen.dart';
+export 'home/offline_screen.dart';
 export 'register/register_screen.dart';
 export 'register/widgets/radio_button.dart';
 export 'register/widgets/drop_down.dart';

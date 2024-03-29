@@ -11,7 +11,7 @@ import '../../widgets/widgets.dart';
 import '../screens.dart';
 
 class RegisterNowScreen extends StatefulWidget {
-  const RegisterNowScreen({super.key});
+  const RegisterNowScreen({key});
 
   @override
   State<RegisterNowScreen> createState() => _RegisterNowScreenState();

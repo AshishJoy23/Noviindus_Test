@@ -11,7 +11,7 @@ class PatientCardWidget extends StatelessWidget {
   final int index;
   final PatientModel patient;
   const PatientCardWidget({
-    super.key,
+    key,
     required this.index,
     required this.patient,
   });
@@ -103,7 +103,7 @@ class PatientCardWidget extends StatelessWidget {
                                   patient.dateNdTime != null
                                       ? formatDateString(patient.dateNdTime!)
                                       : 'Date not found',
-                                  style: TextStyle(fontSize: 12),
+                                  style: const TextStyle(fontSize: 12),
                                 ),
                               ],
                             ),
@@ -125,7 +125,7 @@ class PatientCardWidget extends StatelessWidget {
                                         : "No Name",
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(fontSize: 12),
+                                    style: const TextStyle(fontSize: 12),
                                   ),
                                 ],
                               ),

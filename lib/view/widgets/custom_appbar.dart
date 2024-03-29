@@ -5,8 +5,8 @@ import '../../utils/utils.dart';
 
 class CustomAppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbarWidget({
-    Key? key,
-  }) : super(key: key);
+    key,
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

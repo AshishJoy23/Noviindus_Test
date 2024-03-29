@@ -6,7 +6,7 @@ import '../../../../utils/utils.dart';
 // ignore: must_be_immutable
 class PatientCounterWidget extends StatelessWidget {
   PatientCounterWidget({
-    super.key,
+    key,
     required this.counterValue,
     required this.treatmentController,
     required this.patientCategory,

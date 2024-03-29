@@ -4,7 +4,7 @@ import '../../utils/utils.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   const CustomButtonWidget({
-    super.key,
+    key,
     required this.buttontext,
     required this.onPressed,
     this.isMain = true,

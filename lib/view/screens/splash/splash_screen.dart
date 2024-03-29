@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:noviindus_test/main.dart';
@@ -6,7 +8,7 @@ import 'package:noviindus_test/view/screens/screens.dart';
 import '../../../controller/controllers.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -56,15 +58,44 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> gotoMain() async {
     await Future.delayed(
-      const Duration(seconds: 4),
+      const Duration(seconds: 3),
     );
-    if (token != null) {
-      patientController.getAllPatientsList();
-      treatmentController.getAllBranchesList();
-      treatmentController.getAllTreatmentsList();
-      Get.off(() => const HomeScreen());
+    bool isConnected = await isInternetConnected();
+    if (isConnected) {
+      if (token != null) {
+        patientController.getAllPatientsList();
+        treatmentController.getAllBranchesList();
+        treatmentController.getAllTreatmentsList();
+        Get.off(() => const HomeScreen());
+      } else {
+        Get.off(() => LoginScreen());
+      }
     } else {
-      Get.off(() => LoginScreen());
+      Get.off(() => const OfflineScreen());
+      while (!isConnected) {
+        isConnected = await isInternetConnected();
+      }
+      if (token != null) {
+        patientController.getAllPatientsList();
+        treatmentController.getAllBranchesList();
+        treatmentController.getAllTreatmentsList();
+        Get.off(() => const HomeScreen());
+      } else {
+        Get.off(() => LoginScreen());
+      }
+    }
+  }
+
+  Future<bool> isInternetConnected() async {
+    try {
+      final result = await InternetAddress.lookup('example.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true; // Internet connection available
+      } else {
+        return false; // No internet connection
+      }
+    } on SocketException catch (_) {
+      return false; // No internet connection
     }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -8,7 +10,7 @@ import '../../widgets/widgets.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+  LoginScreen({key});
 
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -89,17 +91,42 @@ class LoginScreen extends StatelessWidget {
                               ));
                             },
                           );
-                          await appController.verifyUserLogin(
-                              nameController.text, passwordController.text);
-                          Get.back();
-                          if (appController.isVerified.value) {
-                            patientController.getAllPatientsList();
-                            treatmentController.getAllBranchesList();
-                            treatmentController.getAllTreatmentsList();
-                            Get.to(() => const HomeScreen());
+                          bool isConnected = await isInternetConnected();
+                          if (isConnected) {
+                            await appController.verifyUserLogin(
+                                nameController.text, passwordController.text);
+                            Get.back();
+                            if (appController.isVerified.value) {
+                              patientController.getAllPatientsList();
+                              treatmentController.getAllBranchesList();
+                              treatmentController.getAllTreatmentsList();
+                              Get.off(() => const HomeScreen());
+                            } else {
+                              // ignore: use_build_context_synchronously
+                              showSnackbarMsg(
+                                  context, 'Invalid login details!!');
+                            }
                           } else {
+                            Get.back();
                             // ignore: use_build_context_synchronously
-                            showSnackbarMsg(context, 'Invalid login details!!');
+                            showSnackbarMsg(
+                                // ignore: use_build_context_synchronously
+                                context, 'Check your internet connection');
+                            while (!isConnected) {
+                              isConnected = await isInternetConnected();
+                            }
+                            await appController.verifyUserLogin(
+                                nameController.text, passwordController.text);
+                            if (appController.isVerified.value) {
+                              patientController.getAllPatientsList();
+                              treatmentController.getAllBranchesList();
+                              treatmentController.getAllTreatmentsList();
+                              Get.off(() => const HomeScreen());
+                            } else {
+                              // ignore: use_build_context_synchronously
+                              showSnackbarMsg(
+                                  context, 'Invalid login details!!');
+                            }
                           }
                         },
                       ),
@@ -114,5 +141,18 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<bool> isInternetConnected() async {
+    try {
+      final result = await InternetAddress.lookup('example.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true; // Internet connection available
+      } else {
+        return false; // No internet connection
+      }
+    } on SocketException catch (_) {
+      return false; // No internet connection
+    }
   }
 }

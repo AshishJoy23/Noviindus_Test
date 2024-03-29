@@ -6,7 +6,7 @@ import 'package:noviindus_test/utils/utils.dart';
 
 class RadioButtonWidget extends StatelessWidget {
   const RadioButtonWidget({
-    super.key,
+    key,
     required this.paymentVaule,
     required this.buttonValue,
     required this.treatmentController,
@@ -34,7 +34,6 @@ class RadioButtonWidget extends StatelessWidget {
         groupValue: paymentVaule,
         onChanged: (value) {
           treatmentController.paymentValue.value = value!;
-          log(treatmentController.paymentValue.value);
         },
         child: Text(
           buttonValue,

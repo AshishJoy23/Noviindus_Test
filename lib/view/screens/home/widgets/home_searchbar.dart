@@ -4,7 +4,7 @@ import '../../../../utils/utils.dart';
 
 class HomeSearchBar extends StatelessWidget {
   const HomeSearchBar({
-    super.key,
+    key,
   });
 
   @override

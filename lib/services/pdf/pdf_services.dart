@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:open_document/open_document.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
 
 class PdfServices {
